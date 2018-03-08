@@ -22,7 +22,7 @@ del info['Unnamed: 0']
 blasts = dict()
 # Get the ensemble mapping to chrids
 ensemble_map = ddict()
-with open('/project/Data/Fasta/ensemble_id_map.txt') as IN:
+with open('../data/ensemble_id_map.txt') as IN:
     for line in IN:
         k,v = line.strip().split(',')
         ensemble_map[k] = v
