@@ -21,14 +21,14 @@ a high density SNP chip based on variants discovered in >20 different horse bree
 - **670K SNPs**: a subset of the 2M SNPs available on the commercial array
 
 To be as exhaustive as possible, the initial SNP discovery effort included all the autosomes cataloged by EquCab2 as well as
-ChrX and two artificially build chromosomes we reffered to as chrUn1 and chrUn2. These contained contigs that were yet unmapped
+ChrX and two artificially build chromosomes we referred to as chrUn1 and chrUn2. These contained contigs that were yet unmapped
 as of EquCab2, many of which were successfully mapped in EquCab3. Therefore in this remapping process we are dealing with three
 different reference genomes:
 
 ### Data Definition:
 - **MNEc_Ec2**: The custom version of EquCab2 that was used in the 2M SNP discovery (contains EquCab2+ChrUn1+ChrUn2)
 - **EquCab2**: The reference genome [available from NCBI](ftp://ftp.ncbi.nih.gov/genomes/Equus_caballus/ARCHIVE/BUILD.2.2/)
-- **EquCab2**: The newset reference genome also [available from NCBI](ftp://ftp.ncbi.nih.gov/genomes/Equus_caballus)
+- **EquCab2**: The newest reference genome also [available from NCBI](ftp://ftp.ncbi.nih.gov/genomes/Equus_caballus)
 
 ## Description of Workflow
 Due to the fact that we are, for now, stuck with the design of the MNEc 2M and 670K SNPs, the unit of data considered here is
@@ -38,13 +38,13 @@ by the array by hybridizing a probe to genomic DNA. This probe was designed usin
 
 The simplest use case here is to extract the probe sequence used by the MNEc chip and BLAST it to the new genome build. The first
 script in the `scripts/` directory called `01_make_probeseq.py` does just that. The script takes an input a Fasta file as well as
-a VCF file containing the MNEc SNP coordinates and outputs a FASTA file containing probe sequnces. The Fasta file and VCF are not 
-included in this project due to limitations of GitHub hosting. But the probesequences generated from the **MNEc_Ec2** reference
+a VCF file containing the MNEc SNP coordinates and outputs a FASTA file containing probe sequences. The Fasta file and VCF are not 
+included in this project due to limitations of GitHub hosting. But the probe sequences generated from the **MNEc_Ec2** reference
 genome used in the array design are available in `data/MNEc2M_probeseq.fa.gz`.
 
 From here, the probe sequences were BLASTED against three different reference genomes: MNEc_Ec2 (as a sanity check), EquCab2 (as 
 another sanity check), and EquCab3. The code used to do this is in `scripts/02_do_blast.sh`. Briefly, the script builds some
-customm blast databases with megablast indexes and then performs a BLAST on each of the MNEc 2M probe sequences and only retains
+custom blast databases with megablast indexes and then performs a BLAST on each of the MNEc 2M probe sequences and only retains
 100%matches (of the 71mer).
 
 Again, some of the input files are
@@ -93,12 +93,12 @@ The first three columns (`MNEcID,AffySNPID,ProbeSetID`) are IDs from the Chip an
 - id: this is an ID indicating the original MNEc_Ec2 SNP position
 
 The last three columns: `MNEc_Ec2,EquCab3,EquCab2` contain the number of times the probe sequence for each SNP BLASTED to each
-reference genome. You can see this is mostly 1 here which is a good indication. You could confidently find the updated corrdinates 
+reference genome. You can see this is mostly 1 here which is a good indication. You could confidently find the updated coordinates 
 in EquCab3 by searching for the ID in the BLAST output file. 
 
 However, for the last SNP we see that, in each genome, the probe sequence blasted to two places. However we also see that the SNP
 was a legacy SNP. The SNP was included on the chip regardless of its initial quality control status due to requirements for 
-backwards compatibilty with the previous generation chips. These are the columns that will indicate successful remapping of probe
+backwards compatibility with the previous generation chips. These are the columns that will indicate successful remapping of probe
 sequence from EquCab2 to EquCab3.
 
 ## Analysis
@@ -159,7 +159,7 @@ the quality of the probes on the chip.
 - We know that each probe is not a 70mer. We are working with Affymetrix to get a more detailed idea of what each probe is.
 - We know that legacy SNPs are likely to be bad performers. Since we forced these probes to be on the chip, we should analyze them separately.
 - When did SNPs map to different chromosomes? We should identify these probes and mark them accordingly.
-- How many SNPs did we move from Chrun to an autosome?
+- How many SNPs did we move from ChrUn to an autosome?
 - How should we proceed with SNPs that are bad performers?
 
 ### Discussion
