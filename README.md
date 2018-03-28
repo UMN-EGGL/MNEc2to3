@@ -1,5 +1,5 @@
 # MNEc2to3
-## Files and script for mapping probe coordinates from EquCab2 to EquCab3
+## Files and scripts for mapping probe coordinates from EquCab2 to EquCab3
 
 This is an open project that aims to provide updated and quality controlled genome coordinates for the 
 [MNEc2M chip](https://doi.org/10.1186/s12864-017-3943-8). It contains scripts and data files related to the 
