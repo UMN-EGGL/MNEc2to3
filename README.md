@@ -174,11 +174,9 @@ Discussion can happen by opening a GitHub issue [here](https://github.com/UMN-EG
 and discuss issues using tools build into Github.
 
 <h3 id='FAQ'>FAQ:</h3>
+
 - Q: Where are the re-mapped coordinate files?
-- A: We are still refining a finalized list, which will be released as a table containing old coordinates and new coordinates.
-Right now, you can find the updated coordinates from old MNEc SNPs in a two step process. 1) Find your SNP id in `data/MNEc2M.probe_blast_counts.csv.gz`
-and 2) If its unique (has a 1 in the EquCab3 column), find the SNP in `data/MNEc2M.blast.EquCab3.txt.gz` which will contain the position of the kmer
-used in the BLAST step. The last two columns of this file contain the position of the blast in EquCab3. The SNP will be 35 above or below the last two columns
+- A: We are still refining a finalized list, which will be released as a table containing old coordinates and new coordinates. Right now, you can find the updated coordinates from old MNEc SNPs in a two step process. 1) Find your SNP id in `data/MNEc2M.probe_blast_counts.csv.gz` and 2) If its unique (has a 1 in the EquCab3 column), find the SNP in `data/MNEc2M.blast.EquCab3.txt.gz` which will contain the position of the kmer used in the BLAST step. The last two columns of this file contain the position of the blast in EquCab3. The SNP will be 35 above or below the last two columns
 in this file.
 
 - Q: This seems convoluted. Is there an easier way to get updated coordinates.
