@@ -180,8 +180,7 @@ and discuss issues using tools build into Github.
 in this file.
 
 - Q: This seems convoluted. Is there an easier way to get updated coordinates.
-- A: Yes, the final remapping pipeline is incomplete. There are some final steps that need to be taken (mainly refining the input probe sequences) before
-a final file is *released*.
+- A: There soon will be. The final remapping pipeline is incomplete. There are some final steps that need to be taken (mainly refining the input probe sequences) before a final file is *released*. See the Status section.
 
 - Q: Your scripts dont work.
 - A: Thats not a question, but probably true. Instead of hosting tons of data on Github, I will soon be releasing a docker image where all the scripts will 
