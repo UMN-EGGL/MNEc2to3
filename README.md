@@ -28,11 +28,11 @@ different reference genomes:
 ### Data Definition:
 - **MNEc_Ec2**: The custom version of EquCab2 that was used in the 2M SNP discovery (contains EquCab2+ChrUn1+ChrUn2)
 - **EquCab2**: The reference genome [available from NCBI](ftp://ftp.ncbi.nih.gov/genomes/Equus_caballus/ARCHIVE/BUILD.2.2/)
-- **EquCab2**: The newest reference genome also [available from NCBI](ftp://ftp.ncbi.nih.gov/genomes/Equus_caballus)
+- **EquCab3**: The newest reference genome also [available from NCBI](ftp://ftp.ncbi.nih.gov/genomes/Equus_caballus)
 
 ## Description of Workflow
-Due to the fact that we are, for now, stuck with the design of the MNEc 2M and 670K SNPs, the unit of data considered here is
-the probe sequence that is actually being hybridized by the array. In other words, what we are mapping are the probe sequences 
+The main focus and the primary unit of data considered here is the probe sequence that is actually being hybridized by the array.
+In other words, what we are mapping are the probe sequences 
 that were put on the actual array in relation to their coordinates from EquCab2 to EquCab3. Each SNP on the chip is interrogated
 by the array by hybridizing a probe to genomic DNA. This probe was designed using the MNEc_Ec2 reference genome.
 
