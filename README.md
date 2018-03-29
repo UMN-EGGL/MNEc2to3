@@ -10,6 +10,13 @@ the best product possible. The data contained herein is available under the [CC-
 license and the code is available under the MIT license. People who contribute to the project will be noted on this page
 and will be included on any scientific publications that directly result from this work.
 
+This project is still in development, see the Status heading. Once a list is finalized, a data file will be [released](https://github.com/UMN-EGGL/MNEc2to3/releases)
+
+For a quick overview, see our [FAQ](#FAQ).
+
+## Status
+
+
 ## Background
 As described in a [previous](https://doi.org/10.1186/s12864-017-3943-8) publication, the equine community banded together to develop
 a high density SNP chip based on variants discovered in >20 different horse breeds. The initial discovery effort found over 
@@ -166,3 +173,18 @@ the quality of the probes on the chip.
 Discussion can happen by opening a GitHub issue [here](https://github.com/UMN-EGGL/MNEc2to3/issues). This lets us track progress
 and discuss issues using tools build into Github.
 
+<h3 id='FAQ'>FAQ:</h3>
+- Q: Where are the re-mapped coordinate files?
+- A: We are still refining a finalized list, which will be released as a table containing old coordinates and new coordinates.
+Right now, you can find the updated coordinates from old MNEc SNPs in a two step process. 1) Find your SNP id in `data/MNEc2M.probe_blast_counts.csv.gz`
+and 2) If its unique (has a 1 in the EquCab3 column), find the SNP in `data/MNEc2M.blast.EquCab3.txt.gz` which will contain the position of the kmer
+used in the BLAST step. The last two columns of this file contain the position of the blast in EquCab3. The SNP will be 35 above or below the last two columns
+in this file.
+
+- Q: This seems convoluted. Is there an easier way to get updated coordinates.
+- A: Yes, the final remapping pipeline is incomplete. There are some final steps that need to be taken (mainly refining the input probe sequences) before
+a final file is *released*.
+
+- Q: Your scripts dont work.
+- A: Thats not a question, but probably true. Instead of hosting tons of data on Github, I will soon be releasing a docker image where all the scripts will 
+have the proper data is accessible. Instructions on how to do this will be included.
