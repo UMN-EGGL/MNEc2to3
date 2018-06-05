@@ -14,7 +14,6 @@ This project is still in development, see the Status heading. Once a list is fin
 
 For a quick overview, see our [FAQ](#FAQ).
 
-## Status
 
 
 ## Background
