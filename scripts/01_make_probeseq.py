@@ -6,12 +6,13 @@ from minus80.Tools import available
 import sys
 import pysam
 
-def print_flank_sequence(vcf,fasta,out,window=35):                                     
+def print_flank_sequence(vcf,fasta,out,window=30):                                     
     vcf = pysam.VariantFile(vcf)                                                   
-    if not available("Fasta",'temp'): 
-        fasta = Fasta.from_file('temp',fasta)                                                 
-    else:
-        fasta = Fasta('temp')
+    #if not available("Fasta",'temp'): 
+    #    fasta = Fasta.from_file('temp',fasta)                                                 
+    #else:
+    #    fasta = Fasta('temp')
+    fasta = Fasta('temp')
 
     with open(out,'w') as OUT:
         for i,var in enumerate(vcf):                                                   
@@ -19,9 +20,10 @@ def print_flank_sequence(vcf,fasta,out,window=35):
             if fasta[var.chrom][var.pos] != var.ref:
                 print(f"{var.id} REF does not match the FASTA. oops.")
             # Grab the probe sequence anyways
-            kmer = ''.join(fasta[var.chrom][var.pos-window:var.pos+window]).upper()                
-            # Grab the FASTA Ref 
-            print(">{}.{}\n{}".format(var.chrom, var.pos, kmer),file=OUT)                       
+            kmer = ''.join(fasta[var.chrom][var.pos+1:var.pos+window]).upper()
+            print(">{}.{}_{}\n{}".format(var.chrom, var.pos, "1", kmer),file=OUT)
+            kmer = ''.join(fasta[var.chrom][var.pos-window:var.pos-1]).upper()
+            print(">{}.{}_{}\n{}".format(var.chrom, var.pos, "2", kmer),file=OUT)                       
                  
 
 if __name__ == '__main__':
