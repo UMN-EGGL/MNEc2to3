@@ -10,11 +10,11 @@ the best product possible. The data contained herein is available under the [CC-
 license and the code is available under the MIT license. People who contribute to the project will be noted on this page
 and will be included on any scientific publications that directly result from this work.
 
-This project is still in development, see the Status heading. Once a list is finalized, a data file will be [released](https://github.com/UMN-EGGL/MNEc2to3/releases)
+**To download the final EquCab3 coordinate lists for all equine SNP arrays, click [here] (https://www.animalgenome.org/repository/pub/UMN2018.1003/).**
 
-For a quick overview, see our [FAQ](#FAQ).
+We are currently in the process of developing software that will remap your SNP array coordinates for you. In the meantime, the Python script `MNEc2to3.py` is included here. It uses the remap tables from the link above to update SNP coordinates and handles strand flips and translocations for VCF files only. For detailed usage instructions, run the following command:
 
-
+``python3 MNEc2to3.py --help``
 
 ## Background
 As described in a [previous](https://doi.org/10.1186/s12864-017-3943-8) publication, the equine community banded together to develop
@@ -27,7 +27,7 @@ a high density SNP chip based on variants discovered in >20 different horse bree
 - **670K SNPs**: a subset of the 2M SNPs available on the commercial array
 
 To be as exhaustive as possible, the initial SNP discovery effort included all the autosomes cataloged by EquCab2 as well as
-ChrX and two artificially build chromosomes we referred to as chrUn1 and chrUn2. These contained contigs that were yet unmapped
+ChrX and two artificially built chromosomes we referred to as chrUn1 and chrUn2. These contained contigs that were yet unmapped
 as of EquCab2, many of which were successfully mapped in EquCab3. Therefore in this remapping process we are dealing with three
 different reference genomes:
 
@@ -154,33 +154,7 @@ On average probes had a unique mapping from EquCab2 to EquCab3.
 |319  |       2|                                                                   
 |415  |       2|    
 
-Again, this result is good. 1.7 Million (of ~2M) sites had an exact match. 
-
-## Future Work
-Future analysis will include cleaning up some of these data tables to make them easier to access. Before this is done, 
-I'd like to commit to a set of analyses that should be completed in order to determine the new coordinates and update
-the quality of the probes on the chip.
-
-### Open issues
-- We know that each probe is not a 70mer. We are working with Affymetrix to get a more detailed idea of what each probe is.
-- We know that legacy SNPs are likely to be bad performers. Since we forced these probes to be on the chip, we should analyze them separately.
-- When did SNPs map to different chromosomes? We should identify these probes and mark them accordingly.
-- How many SNPs did we move from ChrUn to an autosome?
-- How should we proceed with SNPs that are bad performers?
 
 ### Discussion
 Discussion can happen by opening a GitHub issue [here](https://github.com/UMN-EGGL/MNEc2to3/issues). This lets us track progress
 and discuss issues using tools build into Github.
-
-<h3 id='FAQ'>FAQ:</h3>
-
-- Q: Where are the re-mapped coordinate files?
-- A: We are still refining a finalized list, which will be released as a table containing old coordinates and new coordinates. Right now, you can find the updated coordinates from old MNEc SNPs in a two step process. 1) Find your SNP id in `data/MNEc2M.probe_blast_counts.csv.gz` and 2) If its unique (has a 1 in the EquCab3 column), find the SNP in `data/MNEc2M.blast.EquCab3.txt.gz` which will contain the position of the kmer used in the BLAST step. The last two columns of this file contain the position of the blast in EquCab3. The SNP will be 35 above or below the last two columns
-in this file.
-
-- Q: This seems convoluted. Is there an easier way to get updated coordinates.
-- A: There soon will be. The final remapping pipeline is incomplete. There are some final steps that need to be taken (mainly refining the input probe sequences) before a final file is *released*. See the Status section.
-
-- Q: Your scripts dont work.
-- A: Thats not a question, but probably true. Instead of hosting tons of data on Github, I will soon be releasing a docker image where all the scripts will 
-have the proper data is accessible. Instructions on how to do this will be included.
