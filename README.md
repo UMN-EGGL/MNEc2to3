@@ -10,7 +10,7 @@ the best product possible. The data contained herein is available under the [CC-
 license and the code is available under the MIT license. People who contribute to the project will be noted on this page
 and will be included on any scientific publications that directly result from this work.
 
-**To download the final EquCab3 coordinate lists for all equine SNP arrays, click [here] (https://www.animalgenome.org/repository/pub/UMN2018.1003/).**
+**To download the final EquCab3 coordinate lists for all equine SNP arrays, click [here](https://www.animalgenome.org/repository/pub/UMN2018.1003/).**
 
 We are currently in the process of developing software that will remap your SNP array coordinates for you. In the meantime, the Python script `MNEc2to3.py` is included here. It uses the remap tables from the link above to update SNP coordinates and handles strand flips and translocations for VCF files only. For detailed usage instructions, run the following command:
 
