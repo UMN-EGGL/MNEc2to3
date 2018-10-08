@@ -123,11 +123,12 @@ if __name__ == '__main__':
     parser.add_argument(
         '--out','-o', help="Output file name", required=True
     )
-    parser.usage=parser.format_usage().replace('usage:','')+'\nYou must include a remap table (e.g., MNEc670k.unique remap.FINAL.csv.gz) in\nthe same directory as this script. All final remap tables can be downloaded\nfrom https://www.animalgenome.org/repository/pub/UMN2018.1003/.'
+    parser.usage=parser.format_usage().replace('usage:','')+'\nYou must include a remap table (e.g., MNEc2M.unique remap.FINAL.csv.gz) in\nthe same directory as this script. All final remap tables can be downloaded\nfrom https://www.animalgenome.org/repository/pub/UMN2018.1003/.'
     args = parser.parse_args()
     if args.chip not in ['MNEc2M', 'MNEc670k', 'SNP50', 'SNP70']:
         raise Exception('Invalid SNP chip name. Choose from MNEc2M, MNEc670k, SNP50, or SNP70')
+    chip = args.chip.replace('670k','2M')
     try:
-        writeVCF(pd.read_csv(args.chip+'.unique_remap.FINAL.csv.gz'),args.vcf,args.out)
+        writeVCF(pd.read_csv(chip+'.unique_remap.FINAL.csv.gz'),args.vcf,args.out)
     except FileNotFoundError:
-        print('You must include a remap table (e.g., MNEc670k.unique remap.FINAL.csv.gz) in\nthe same directory as this script. All final remap tables can be downloaded\nfrom https://www.animalgenome.org/repository/pub/UMN2018.1003/.')
+        print('You must include a remap table (e.g., MNEc2M.unique remap.FINAL.csv.gz) in\nthe same directory as this script. All final remap tables can be downloaded\nfrom https://www.animalgenome.org/repository/pub/UMN2018.1003/.')
