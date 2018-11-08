@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import argparse,datetime,os
+import argparse,datetime,os,glob
 import pandas as pd
 import numpy as np
 
@@ -127,8 +127,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.chip not in ['MNEc2M', 'MNEc670k', 'SNP50', 'SNP70']:
         raise Exception('Invalid SNP chip name. Choose from MNEc2M, MNEc670k, SNP50, or SNP70')
-    chip = args.chip.replace('670k','2M')
+    chip = args.chip
     try:
-        writeVCF(pd.read_csv(chip+'.unique_remap.FINAL.csv.gz'),args.vcf,args.out)
+        writeVCF(pd.read_csv(glob.glob(chip+'.unique_remap.FINAL.csv*')[0]),args.vcf,args.out)
     except FileNotFoundError:
         print('You must include a remap table (e.g., MNEc2M.unique remap.FINAL.csv.gz) in\nthe same directory as this script. All final remap tables can be downloaded\nfrom https://www.animalgenome.org/repository/pub/UMN2018.1003/.')
