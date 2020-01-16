@@ -8,11 +8,11 @@ import pysam
 
 def print_flank_sequence(vcf,fasta,out,window=30):                                     
     vcf = pysam.VariantFile(vcf)                                                   
-    #if not available("Fasta",'temp'): 
-    #    fasta = Fasta.from_file('temp',fasta)                                                 
-    #else:
-    #    fasta = Fasta('temp')
-    fasta = Fasta('temp')
+    if not available("Fasta",'temp'): 
+        fasta = Fasta.from_file('temp',fasta)                                                 
+    else:
+        fasta = Fasta('temp')
+    
 
     with open(out,'w') as OUT:
         for i,var in enumerate(vcf):                                                   
